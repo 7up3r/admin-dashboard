@@ -1,3 +1,4 @@
+
 body {
     display: grid;
     width: 100vw;
@@ -5,21 +6,42 @@ body {
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr 5.5fr;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .dashboard {
-    color: white;
-    background-color: turquoise;
+    color: black;
+    background-color: #bfdbfe;
     grid-column: 1 / 2;
     grid-row: 1 / -1;
+    justify-content: start;
+    align-items: center;
 }
 
-.dashboard>h1{
+.dashboard>.heading {
+    display: flex;
+    height: 7vh;
+    width: 100%;
+} 
+
+.dashboard>h1 {
     margin-bottom: 75px;
 }
+
 .dashboard>ul {
+    list-style: none;
     display: grid;
     grid-template-rows: repeat(5 , 50px) 200px repeat(3 , 50px);
+    justify-content: start;
+    align-items: center;
+}
+
+.dashboard>ul>li {
+    display: flex;
+    height: 3vh;
+    width: 100%;
+    gap: 2vw;
+    font-size: x-large;
 }
 
 .header {
@@ -38,6 +60,12 @@ body {
     gap: 2vw;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.searchLogo>img {
+    height: 3vh;
+    width: 3vw;
 }
 
 #searchbar {
@@ -46,14 +74,35 @@ body {
     border-radius: 2vh;
     border: 0px solid seashell;
     height: 3vh;
+    font-size: medium;
+    padding-left: 1vw;
 }
 
+#searchbar:focus{
+    outline: none;
+    border: 5px solid goldenrod;
+}
 .profileButtons {
     grid-column: 2 / 3;
     display: flex;
     gap: 15px;
     align-items: center;
     justify-content: center;
+}
+
+.notification>img {
+    height: 3vh;
+    width: 3vw;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile>img {
+    height: 5vh;
+    width: 5vw;
 }
 
 .welcomeMessage {
@@ -63,22 +112,46 @@ body {
     align-items: center;
 }
 
+.welcomeMessage>img {
+    height: 8vh;
+    width: 8vw;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.welcome>.userName {
+    font-weight: bolder;
+    font-size: x-large;
+}
+
 .feature {
     display: flex;
     align-items: center;
     justify-content: start;
-    border: 1px solid snow;
 }
 
 .feature ul{
     display: flex;
-    gap: 4vw;
-    border: 1px solid salmon;
+    gap: 5vw;
 }
 
 .feature li {
     list-style: none;
-    border: 1px solid blue;
+}
+
+.feature button {
+    height: 4vh;
+    width: 5vw;
+    color: black;
+    font-size:medium;
+    font-weight: 900;
+    border-radius: 2vh;
+    background-color: #93c5fd;
+    border: none;
 }
 
 .bodyContainer {
@@ -113,15 +186,31 @@ h3 {
 .projectContainer>.card{
     background-color: #FFFFFF;
     margin: 10px;
-    height: 200px;
-    justify-content: center;
-    align-content: center;
+    height: 220px;
     border-radius: 1vh;
-    padding: 10px;
+    padding: 1vw;
     border-left: 10px solid orange;
     box-shadow: 0px 0px 2px 2px rgb(180, 178, 178, 0.5);
+    display: flex;
+    flex-direction: column;
 }
 
+.cardContent>h4,
+.cardContent>p {
+    margin: 0;
+    margin-top: 1vh;
+}
+
+.tools {
+    margin-bottom: 1vh;
+    margin-top: auto;
+    align-self: flex-end;
+    height: 30px;
+}
+
+.tools>img {
+    width: 30px;
+}
 .announcement {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
@@ -132,20 +221,23 @@ h3 {
 
 .announcementContainer {
     flex: 1;
-    background-color: #E2E8F0;
+    background-color: #FFFFFF;
     border-radius: 1vh;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 2px 2px rgb(180, 178, 178, 0.5);
-    padding: 2px;
+    padding: 1vw;
 }
 
 .announcementContainer>.card{
-    background-color: #FFFFFF;
-    flex: 1;
     padding: 10px;
+    flex: 1;
+    border-bottom: 1px solid rgb(180, 178, 178, 0.5);
 }
 
+.announcementContainer>.lastCard {
+    border: none;
+}
 .trending {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -155,15 +247,66 @@ h3 {
 }
 .trendingContainer {
     flex: 1;
-    background-color: #E2E8F0;
+    background-color: #FFFFFF;
     border-radius: 1vh;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 2px 2px rgb(180, 178, 178, 0.5);
-    padding: 2px;
+    padding: 1vw;
 }
 
 .trendingContainer>.card {
-    background-color: #FFFFFF;
     flex: 1;
+    display: flex;
+    margin-left: 20px;
+    gap: 20px;
+}
+
+.trendingContainer>.card>.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.trendingContainer>.card>img {
+    height: auto;
+    width:  70px;
+}
+
+.profile>h4,
+.profile>p {
+    margin: 0;
+    margin-top: 1vh;
+}
+
+/*transitions*/
+
+.card,
+li {
+    position: relative;
+    top: 0;
+    transition: top ease 0.3s;
+}
+
+.card:hover,
+li:hover {
+    top: -5px;
+}
+
+.profileImage {
+    transition: all 0.3s;
+}
+
+.profileImage:hover {
+    transform: scale(1.5);
+}
+
+.userName,
+.tools>img{
+    transition: top ease 0.3s;
+}
+
+.userName:hover,
+.tools>img:hover {
+    transform: scale(1.1);
 }
